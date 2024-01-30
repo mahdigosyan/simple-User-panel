@@ -25,3 +25,20 @@ def Outp():
     admin.close()
     infile.close()
     return i
+
+
+def Cnk():
+    user = Outp()
+    if 'admin' in user[0] and user[1] == True:
+        print('Hello user:' + user[0], '\n', '1)View log file', '\n',
+              '2)View list of users', '\n', '3)Change the Users password \n',
+              '4)Add user \n', '5)Delete user \n', '6)Block user\n',
+              '7)Unblock user\n', '8)Exit\n')
+        i = int(input())
+        while i != 8:
+            if i == 1:
+                print('//-------------------------------------\\' + '\\')
+                [print(i, end='') for i in open('output.txt', encoding='utf-8')]
+                print('//_____________________________________\\' + '\\')
+                open('output.txt', 'a+', encoding='utf-8').write(
+                    'The administrator looked at the logs' + ' ' + str(datetime.today())[:19] + '\n')
