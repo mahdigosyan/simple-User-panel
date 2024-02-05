@@ -62,3 +62,22 @@ def Cnk():
                             cache[i + 1] = passw
                             open('output.txt', 'a+', encoding='utf-8').write(
                                 'Users password' + us + ' successfully changed' + ' ' + str(datetime.today())[
+                                                                                           :19] + '\n')
+
+                            break
+                        else:
+                            print('The password does not match the requirements\n')
+                            open('output.txt', 'a+', encoding='utf-8').write(
+                                'Failed to change user password' + us + ' ' + str(datetime.today())[
+                                                                                          :19] + '\n')
+                            break
+                f = open('users.txt', 'w', encoding='utf-8')
+                for i in range(0, len(cache), 3):  # write in file from the cache
+                    f.write(cache[i] + ' ' + cache[i + 1] + ' ' + cache[i + 2] + '\n')
+
+                f.close()
+
+            elif i == 4:
+                name = input('Enter login: ')
+                passw = input(
+                    'enter password\nThe password must contain number, Latin, numbers and be more than 7 characters long\n')
