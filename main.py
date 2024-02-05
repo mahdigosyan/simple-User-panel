@@ -42,3 +42,23 @@ def Cnk():
                 print('//_____________________________________\\' + '\\')
                 open('output.txt', 'a+', encoding='utf-8').write(
                     'The administrator looked at the logs' + ' ' + str(datetime.today())[:19] + '\n')
+
+            elif i == 2:
+                print('*----------------------------*')
+                [print(i, end='') for i in open('users.txt', encoding='utf-8')]
+                print('\n*____________________________*')
+                open('output.txt', 'a+', encoding='utf-8').write(
+                    'The administrator looked at the list of users' + ' ' + str(datetime.today())[:19] + '\n')
+
+            elif i == 3:
+                us = input('Enter your username: ')
+                cache = open('users.txt', 'r', encoding='utf-8').read().split()
+                open('users.txt', 'w').close()  # clear file
+                for i in range(len(cache)):  # search on target word
+                    if cache[i] == us:
+                        passw = input(
+                            'The password must contain numbers, Latin and digits.\n' + 'Enter the password you want to change: ')
+                        if mask(passw):
+                            cache[i + 1] = passw
+                            open('output.txt', 'a+', encoding='utf-8').write(
+                                'Users password' + us + ' successfully changed' + ' ' + str(datetime.today())[
