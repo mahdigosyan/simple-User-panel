@@ -81,3 +81,22 @@ def Cnk():
                 name = input('Enter login: ')
                 passw = input(
                     'enter password\nThe password must contain number, Latin, numbers and be more than 7 characters long\n')
+                if mask(passw):
+                    open('users.txt', 'a+', encoding="utf-8").write(name +
+                                                                    ' ' + passw + ' ' + 'True' + '\n')
+                    open('output.txt', 'a+', encoding='utf-8').write(
+                        'User ' + name + ' successfully added' + ' ' + str(datetime.today())[:19] + '\n')
+                else:
+                    print('Password is not allowed.\nReturn to menu')
+                    open('output.txt', 'a+', encoding='utf-8').write(
+                        'User ' + name + ' not added' + ' ' + str(datetime.today())[:19] + '\n')
+
+            elif i == 5:
+                us = input('Enter your username: ')
+                cache = open('users.txt', 'r', encoding='utf-8').read().split()
+                open('users.txt', 'w').close()  # clear file
+                for i in range(len(cache)):  # search on target word
+                    if cache[i] == us:
+                        del cache[i]
+                        del cache[i]
+                        del cache[i]
